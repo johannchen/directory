@@ -1,0 +1,33 @@
+<% content_for :sidebar do %>
+  <% @groups.each do |group| %>
+    <%= group.name %><br>
+  <% end %>
+<% end %>
+
+<h2>Listing contacts</h2>
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.firstname %></td>
+    <td><%= contact.lastname %></td>
+    <td><%= contact.email %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contact', new_contact_path %>
