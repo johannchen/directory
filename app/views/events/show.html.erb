@@ -10,6 +10,13 @@
   <%= @event.when %>
 </p>
 
+<p>
+  <b>Groups:</b>
+  <% for group in @event.groups %>
+    <%= group.name %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

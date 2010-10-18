@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,6 +58,7 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    params[:event][:group_ids] ||= []
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

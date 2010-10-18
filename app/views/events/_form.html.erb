@@ -17,8 +17,14 @@
   </div>
   <div class="field">
     <%= f.label :when %><br />
-    <%= f.date_select :when %>
+    <%= f.text_field :when %>
   </div>
+  <% for group in Group.all %>
+  <div class="field">
+    <%= check_box_tag "event[group_ids][]", group.id, @event.groups.include?(group) %>
+    <%= group.name %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
