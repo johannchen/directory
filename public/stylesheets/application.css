@@ -1,0 +1,401 @@
+#container
+{
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+}
+
+#header
+{
+  background: #ccc;
+  padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+  float: left;
+  width: 100%;
+  background: #333;
+}
+
+#navigation ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul li
+{
+  list-style-type: none;
+  display: inline;
+}
+
+#navigation li a
+{
+  display: block;
+  float: left;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { background: #383; }
+
+#content-container
+{
+  float: left;
+  width: 100%;
+  background: #FFF url(layout-two-liquid-background.gif) repeat-y 68% 0;
+}
+
+#aside
+{
+  float: left;
+  width: 15%;
+  padding: 20px 0;
+  margin: 0 3% 0 0;
+  display: inline;
+}
+
+#aside h3 { margin: 0; }
+
+#content
+{
+  float: left;
+  width: 70%;
+  padding: 20px 0;
+  margin: 0 0 0 0%;
+  display: inline;
+}
+
+#content h2 { margin: 0; }
+
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+#calendar .notmonth {
+  color: #CCC;
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar .today {
+  background-color: #D7F2FF;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+#footer
+{
+  clear: left;
+  background: #ccc;
+  text-align: right;
+  padding: 20px;
+  height: 1%;
+}
+
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+.simple_form div.input {
+  margin-bottom: 10px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  margin-left: 120px;
+}
+
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0;
+}
+
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px;
+}
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+/* TABLES
+--------------------------------------*/
+.dataTable {
+  width: 100%;
+  clear: both;
+  empty-cells: show;
+  border: 1px solid #CCC;
+}
+.dataTable th {
+  background-color: #555;
+  color: #FFF;
+  padding: 3px 9px;
+  vertical-align: top;
+  text-align: left;
+}
+.dataTable td {
+  text-align: left;
+  vertical-align: top; 
+  border-bottom: 1px #EEE solid;
+  padding: 3px 9px;
+}
+tr.highlight {
+  background-color: #ffff80;
+  cursor: pointer;
+}
+
+.dataTable th a, .dataTable th a:visited  { color: #FFF; }
+.dataTable th a:hover { color: #EFCB73; }
+
+.leftTable {
+  border: 2px solid #FEE19F;
+  background-color: #FDF9EE;
+  padding: 8px;
+}
+.leftTable td, .leftTable th {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 4px;
+  font-size: 12px;
+}
+
+.leftTable th {
+  text-align: right;
+}
+
+.leftTable td .dataTable th {
+  text-align: left;
+}
+
+.leftTable td .dataTable td {
+  background-color: #FFF;
+}
+
+.listTable {
+  width: 100%;
+  padding: 0 18px;
+}
+
+.listTable td, .listTable th {
+  color: #333;  
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding: 4px 20px 4px 0;
+  vertical-align: top;
+}
+
+.listTable th {
+  font-size: 11px;
+  color: #555;
+}
+
+.listTable td {
+  font-size: 12px;
+}
+
+.listTable td.number {
+  text-align: right;
+}
+
+
+/* TABLECLOTH STYLES
+--------------------------------------------------------------------*/
+#content table { width: 100%; border-collapse: collapse; margin: 1em 0; border: 0 }
+#content td { text-align: left; padding:.5em; border-bottom: 1px solid #dbebf9; }
+#content th { background: #0074c4; color: #fff; }
+#content td { background: #f4f9ff; }
+
+#content tr.even td { }
+#content tr.odd td { }
+
+#content th.over, #content tr.even th.over, #content tr.odd th.over { background: #0074c4; }
+#content th.down, #content tr.even th.down, #content tr.odd th.down { }
+#content th.selected, #content tr.even th.selected, #content tr.odd th.selected { }
+
+#content td.over, #content tr.even td.over, #content tr.odd td.over { background: #e7f2ff; }
+#content td.down, #content tr.even td.down, #content tr.odd td.down { background: #e7f2ff; }
+#content td.selected, #content tr.even td.selected, #content tr.odd td.selected { background: #b3f9ae; }
+
+/* Use this if you want to apply different styleing to empty table cells*/
+#content td.empty, #content tr.odd td.empty, #content tr.even td.empty { }
+
+#content th ul, #content th ol, #content td ul, #content td ol {
+  margin: 0;
+  padding: 0 1em 0 2em;
+} 
+
+
+/* simple form */
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+.simple_form div.input {
+  margin-bottom: 10px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  margin-left: 120px;
+}
+
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0;
+}
+
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px;
+}
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+/* user login/logout nav */
+.user_nav {
+  float: right;
+}

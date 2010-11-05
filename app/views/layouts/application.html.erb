@@ -3,20 +3,27 @@
 <head>
   <title>Directory</title>
   <%= stylesheet_link_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "jquery.rails.js", "application"%>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"%>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
 <div id="container">
   <div id="header">
     <h1>
      Directory 
     </h1>
+    <div class="user_nav">
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>. Not you? 
+        <%= link_to "Sign out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </div> 
   </div>
+<% if user_signed_in? %>
   <div id="navigation">
     <ul>
       <li><a href="#">Home</a></li>
@@ -26,18 +33,24 @@
       <li><a href="#">Admin</a></li>
     </ul>
   </div>
+<% end %>
   <div id="content-container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
     <div id="aside">
       <h3>
       Groups
       </h3>
       <%= yield :sidebar %>
     </div>
+    <% end %>
+
     <div id="content">
 <%= yield %>
     </div>
     <div id="footer">
-      Copyright © Site name, 20XX
+      Copyright © Site name, 2010
     </div>
   </div>
 </div>

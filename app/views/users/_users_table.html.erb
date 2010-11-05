@@ -1,0 +1,26 @@
+<h2>Users</h2>
+<%= link_to 'Add User', new_user_path %>
+<table class="dataTable">
+  <tr>
+    <th>Login</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th>Actions</th>
+  </tr>
+
+<% @users.each do |u| %>
+  <tr>
+    <td></td>
+    <td><%= link_to_if(can?(:read, User), u.email, user_path(u.id)) {} %></td>
+      <td><%= u.email %></td>
+      <td><%= u.roles.collect{|r| r.name} %></td>
+      <td>
+<% if can? :edit, User %>
+  <%= link_to "Edit", edit_user_path(u.id) %>
+<% end %>
+      </td>
+  </tr>
+<% end %>
+</table>
+

@@ -10,8 +10,14 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # authentication gem
 gem 'devise'
 
+# authorization
+gem 'cancan'
+
 # jQuery
 gem 'jquery-rails'
+
+# simple form 
+gem 'simple_form'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831224540) do
+ActiveRecord::Schema.define(:version => 20101029162352) do
 
   create_table "contacts", :force => true do |t|
     t.string   "firstname"
@@ -18,6 +18,18 @@ ActiveRecord::Schema.define(:version => 20100831224540) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
+    t.string   "second_email"
+    t.string   "cell_phone"
+    t.string   "home_phone"
+    t.date     "birthday"
+    t.string   "address"
+    t.string   "dorm"
+    t.string   "hometown"
+    t.string   "came_through"
+    t.string   "note"
+    t.integer  "status_id"
+    t.integer  "user_id"
   end
 
   create_table "contacts_groups", :id => false, :force => true do |t|
@@ -59,10 +71,15 @@ ActiveRecord::Schema.define(:version => 20100831224540) do
     t.datetime "updated_at"
   end
 
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
+    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -73,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20100831224540) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
+    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

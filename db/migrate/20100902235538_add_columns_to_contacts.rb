@@ -6,7 +6,6 @@ class AddColumnsToContacts < ActiveRecord::Migration
     add_column :contacts, :home_phone, :string
     add_column :contacts, :birthday, :date
     add_column :contacts, :address, :string
-    add_column :contacts, :dorm, :string
     add_column :contacts, :hometown, :string
     add_column :contacts, :came_through, :string
     add_column :contacts, :note, :string
@@ -20,7 +19,6 @@ class AddColumnsToContacts < ActiveRecord::Migration
     remove_column :contacts, :home_phone
     remove_column :contacts, :birthday
     remove_column :contacts, :address
-    remove_column :contacts, :dorm
     remove_column :contacts, :hometown
     remove_column :contacts, :came_through
     remove_column :contacts, :note
