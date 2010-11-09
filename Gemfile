@@ -19,6 +19,9 @@ gem 'jquery-rails'
 # simple form 
 gem 'simple_form'
 
+# debug
+gem 'ruby-debug19', :require => 'ruby-debug'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

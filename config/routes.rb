@@ -8,7 +8,10 @@ Directory::Application.routes.draw do
 
   resources :contacts
 
-  resources :roles
+  resources :roles do
+    put 'assign', :on => :member
+    put 'remove', :on => :member
+  end 
 
   devise_for :users, do
     get "sign_in", :to => "devise/sessions#new" 
@@ -64,10 +67,6 @@ Directory::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  namespace :admin do
-    resources :roles
-  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

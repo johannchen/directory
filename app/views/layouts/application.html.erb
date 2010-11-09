@@ -35,13 +35,13 @@
   </div>
 <% end %>
   <div id="content-container">
-    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
     <div id="aside">
-      <h3>
-      Groups
-      </h3>
+      <% if can? :manage, User %>
+        <%= link_to "Users", users_path %> <br />
+        <%= link_to "Roles", roles_path %> <br />
+      <% end %>
       <%= yield :sidebar %>
     </div>
     <% end %>

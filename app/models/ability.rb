@@ -6,9 +6,9 @@ class Ability
 
     if user.admin?
       can :manage, :all
-    elsif user.role? :director
+    elsif user.role? "Director" 
       can :manage, :all
-    elsif user.role? :staff
+    elsif user.role? "Staff"
       can :manage, :all
     else
       can :read, :all

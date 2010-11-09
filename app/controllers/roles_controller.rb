@@ -1,6 +1,34 @@
 class RolesController < ApplicationController
+  # GET /roles
+  def index
+    @roles = Role.all
 
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+  
+  # GET /roles/1
+  def show
+    @role = Role.find(params[:id])
+    @users = @role.users
 
+    @existing_users = User.where(["id not in (?)", @users.map(&:id)])
+    @user = User.new
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
+  # GET /roles/new
+  def new
+    @role = Role.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
 
   # GET /roles/1/edit
   def edit
@@ -49,5 +77,18 @@ class RolesController < ApplicationController
       format.html { redirect_to(roles_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def assign
+    # assign users to role
+    debugger
+    @role = Role.find(params[:id])
+    if params[:commit] == "Add"
+      @role.user_ids += params[:assign_user_ids]
+    elsif params[:commit] == "Remove"
+      @role.user_ids -= params[:remove_user_ids].map(&:to_i)
+    end
+    
+    redirect_to :action => :show
   end
 end

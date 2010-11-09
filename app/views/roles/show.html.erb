@@ -1,15 +1,32 @@
 <p id="notice"><%= notice %></p>
-<%= debug(params) %>
 
 <h2>Role: <%= @role.name %></h2>
+<%= link_to 'Edit', edit_role_path(@role) %> <br />
 
-<h3>Add an existing user</h3>
+<h3>Remove users from <%= @role.name %></h3> 
+# users are <%= @role.name %> <br />
+<%= form_tag assign_role_path, :method => :put do %>
+  <% for u in @users %>
+    <div class="field">
+      <%= check_box_tag "remove_user_ids[]", u.id %>
+      <%= u.email %>
+    </div>
+  <% end %>
+  <div class="button">
+  <%= submit_tag "Remove" %>
+  </div>
 
-<h3>Add a new user</h3>
-<%= render 'users/form' %>
+<h3>Assign users to <%= @role.name %></h3> 
+  <% for eu in @existing_users %>
+    <div class="field">
+      <%= check_box_tag "assign_user_ids[]", eu.id %>
+      <%= eu.email %>
+    </div>
+  <% end %>
+  <div class="button">
+  <%= submit_tag "Add" %>
+  </div>
+<% end %>
 
-<%= render 'users/users_table' %>
 
-
-<%= link_to 'Edit', edit_role_path(@role) %> |
 <%= link_to 'Back', roles_path %>
