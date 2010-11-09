@@ -4,7 +4,7 @@
 <%= link_to 'Edit', edit_role_path(@role) %> <br />
 
 <h3>Remove users from <%= @role.name %></h3> 
-# users are <%= @role.name %> <br />
+<b><%= @role.user_ids.size %></b> users are <%= @role.name %> <br />
 <%= form_tag assign_role_path, :method => :put do %>
   <% for u in @users %>
     <div class="field">

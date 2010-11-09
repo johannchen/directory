@@ -24,9 +24,16 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :staff %><br />
-    <%= options_from_collection_for_select(User.all, :id, :fullname) %>
+  <% for group in Group.all %>
+    <%= check_box_tag "contact[group_ids][]", group.id, @contact.groups.include?(group) %>
+    <%= group.name %>
+  <% end %>
   </div>
+
+  <div class="field">
+    <%= f.label :assign_to_staff %><br />
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

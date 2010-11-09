@@ -15,6 +15,9 @@
 
   <% if can? :read, Role %>
     <%= f.label :role %>
+    <div class="field">
+      <%= f.check_box :admin %> Admin
+    </div>
     <% for r in Role.all %>
       <div class="field">
       <%= check_box_tag "user[role_ids][]", r.id, @user.roles.include?(r) %>
@@ -22,6 +25,11 @@
       </div>
     <% end %> 
   <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
   <div class="field">
     <%= f.label :email %>
@@ -36,6 +44,11 @@
   <div class="field">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile %>
+    <%= f.select(:contact_id, @contacts.collect {|c| [c.full_name, c.id]}, options ={:prompt => "Select a profile from contact"} )%>
   </div>
  
   <div class="actions">

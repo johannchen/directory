@@ -16,7 +16,7 @@
 <% @roles.each do |role| %>
   <tr>
     <td><%= role.name %></td>
-    <td></td>
+    <td><%= role.user_ids.size %></td>
     <td><%= link_to 'Add/Remove Users', role %> | Delete Role</td>
   </tr>
 <% end %> 

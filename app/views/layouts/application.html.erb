@@ -26,11 +26,9 @@
 <% if user_signed_in? %>
   <div id="navigation">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Contacts</a></li>
-      <li><a href="#">Staff</a></li>
-      <li><a href="#">Admin</a></li>
+      <li><%= link_to "Home", users_path %></a></li>
+      <li><%= link_to "Events", events_path %></a></li>
+      <li><%= link_to "Contacts", contacts_path %></a></li>
     </ul>
   </div>
 <% end %>
@@ -41,6 +39,7 @@
       <% if can? :manage, User %>
         <%= link_to "Users", users_path %> <br />
         <%= link_to "Roles", roles_path %> <br />
+        <%= link_to "Groups", groups_path %> <br />
       <% end %>
       <%= yield :sidebar %>
     </div>

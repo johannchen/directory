@@ -81,7 +81,6 @@ class RolesController < ApplicationController
 
   def assign
     # assign users to role
-    debugger
     @role = Role.find(params[:id])
     if params[:commit] == "Add"
       @role.user_ids += params[:assign_user_ids]

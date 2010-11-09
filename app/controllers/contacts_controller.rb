@@ -26,6 +26,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.xml
   def new
     @contact = Contact.new
+    # TODO: a list of users who are staff and helper belong the same group
 
     respond_to do |format|
       format.html # new.html.erb
