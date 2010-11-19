@@ -27,6 +27,10 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     # TODO: a list of users who are staff and helper belong the same group
+    # TODO: what if admin modify the role. no role modification in admin page.
+    # note: cannot use variable name helper
+    @staff_users = Role.first.users.select("id, name").order(:name)
+    @helper_users = Role.find(2).users.select("id, name").order(:name)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +41,10 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
     @contact = Contact.find(params[:id])
+    @active_lead_id ||= @contact.active_lead.id unless @contact.active_lead.nil?
+    @active_helper_id ||= @contact.active_helper.id unless @contact.active_helper.nil?
+    @staff_users = Role.first.users.select("id, name").order(:name)
+    @helper_users = Role.find(2).users.select("id, name").order(:name)
   end
 
   # POST /contacts
@@ -46,6 +54,13 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+        # create relationships
+        Relationship.create! :contact => @contact, :user => User.find(params[:leader]), :relationship => 'lead', :active => true
+        Relationship.create! :contact => @contact, :user => User.find(params[:helper]), :relationship => 'helper', :active => true
+
+        #link groups
+        
+
         format.html { redirect_to(@contact, :notice => 'Contact was successfully created.') }
         format.xml  { render :xml => @contact, :status => :created, :location => @contact }
       else
@@ -62,6 +77,8 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
+        Relationship.create! :contact => @contact, :user => User.find(params[:leader]), :relationship => 'lead', :active => true
+        Relationship.create! :contact => @contact, :user => User.find(params[:helper]), :relationship => 'helper', :active => true
         format.html { redirect_to(@contact, :notice => 'Contact was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :contact
   has_and_belongs_to_many :roles
-  has_and_belongs_to_many :contacts
+  has_many :relationships
+  has_many :contacts, :through => :relationships
   has_and_belongs_to_many :groups
 
   # Include default devise modules. Others available are:
