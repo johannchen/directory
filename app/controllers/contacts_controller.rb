@@ -2,6 +2,8 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
+    # TODO: default: list contacts under the login user
+    
     @contacts = Contact.all
     @groups = Group.all
 
@@ -77,8 +79,13 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
+        # set active relationships to inactive 
+        Relationship.where(['contact_id = ?', params[:id]]).update_all :active => false
+        # update or create current active relationships
+        # TODO: possilbe to get rid off User.find, use params instead
         Relationship.create! :contact => @contact, :user => User.find(params[:leader]), :relationship => 'lead', :active => true
         Relationship.create! :contact => @contact, :user => User.find(params[:helper]), :relationship => 'helper', :active => true
+
         format.html { redirect_to(@contact, :notice => 'Contact was successfully updated.') }
         format.xml  { head :ok }
       else

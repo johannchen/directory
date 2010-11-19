@@ -11,8 +11,8 @@
     <th>Firstname</th>
     <th>Lastname</th>
     <th>Email</th>
-    <th></th>
-    <th></th>
+    <th>Leader</th>
+    <th>Helper</th>
     <th></th>
   </tr>
 
@@ -21,9 +21,11 @@
     <td><%= contact.firstname %></td>
     <td><%= contact.lastname %></td>
     <td><%= contact.email %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= contact.active_lead_name %></td>
+    <td><%= contact.active_helper_name %></td>
+    <td><%= link_to 'Show', contact %> |
+    <%= link_to 'Edit', edit_contact_path(contact) %> |
+    <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
