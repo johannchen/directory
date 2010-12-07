@@ -1,10 +1,12 @@
 class ContactsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   # GET /contacts
   # GET /contacts.xml
   def index
     # TODO: default: list contacts under the login user
     
-    @contacts = Contact.all
+    @contacts = Contact.search(params[:search], params[:group], sort_column + " " + sort_direction)
     @groups = Group.all
 
     respond_to do |format|
@@ -106,4 +108,14 @@ class ContactsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+  def sort_column
+    Contact.column_names.include?(params[:sort]) ? params[:sort] : "firstname"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end    
+
 end

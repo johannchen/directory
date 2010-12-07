@@ -27,4 +27,20 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  # TODO: simply query
+  def self.search(search, group, order)
+    if search
+      if group.nil?
+        where('firstname LIKE ?', "%#{search}%").order("#{order}")
+      else
+        find_by_sql ["SELECT * FROM contacts INNER JOIN contacts_groups ON contacts.id = contacts_groups.contact_id WHERE contacts.firstname LIKE ? AND contacts_groups.group_id = ?", "%#{search}%", "#{group}"]
+      end
+    else
+      if group.nil?
+        order("#{order}")
+      else
+        find_by_sql ["SELECT * FROM contacts INNER JOIN contacts_groups ON contacts.id = contacts_groups.contact_id WHERE contacts_groups.group_id = ?", "#{group}"]
+      end
+    end
+  end
 end

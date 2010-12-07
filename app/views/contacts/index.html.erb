@@ -1,34 +1,17 @@
 <% content_for :sidebar do %>
   <% @groups.each do |group| %>
-    <%= group.name %><br>
+    <%= link_to group.name, params.merge(:group => group.id) %> (<%= group.contacts.count %>)<br>
   <% end %>
 <% end %>
 
 <h2>Listing contacts</h2>
-
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Email</th>
-    <th>Leader</th>
-    <th>Helper</th>
-    <th></th>
-  </tr>
-
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.firstname %></td>
-    <td><%= contact.lastname %></td>
-    <td><%= contact.email %></td>
-    <td><%= contact.active_lead_name %></td>
-    <td><%= contact.active_helper_name %></td>
-    <td><%= link_to 'Show', contact %> |
-    <%= link_to 'Edit', edit_contact_path(contact) %> |
-    <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= form_tag contacts_path, :method => 'get', :id => "contacts_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  </p>
+  <div id="contacts"><%= render 'contacts' %></div>
 <% end %>
-</table>
 
 <br />
 
